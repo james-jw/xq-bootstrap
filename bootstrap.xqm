@@ -12,7 +12,7 @@ declare function bootstrap:head($title as xs:string, $contents as node()?) as no
 };
 
 declare function bootstrap:head() as node() {
-  bootstrap:head(())
+  bootstrap:head('', ())
 };
 
 declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as node() {
