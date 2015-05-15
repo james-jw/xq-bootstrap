@@ -1,6 +1,6 @@
 module namespace bootstrap = 'http://jw.bootstrap';
 
-declare function bootstrap:head($title as xs:string, $contents as node()?) as node() {
+declare function bootstrap:head($title as xs:string, $contents as node()*) as node() {
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
