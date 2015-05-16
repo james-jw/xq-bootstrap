@@ -172,7 +172,7 @@ declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as e
       </div>)
   return
     <div role="tabpanel">
-      <ul class="nav nav-{($style, 'tab')[1]}s" role="tablist">{$tabs-out/li}</ul>
+      <ul class="nav {($style, 'nav-tabs')[1]}" role="tablist">{$tabs-out/li}</ul>
       <div class="tab-content">{$tabs-out/div}</div>
     </div>
 };
@@ -204,18 +204,74 @@ declare function bootstrap:attributes($element as node(), $items as item()) as n
 };
 
 declare function bootstrap:divider() as element(li) { <li class="divider" role="presentation"></li> };
-declare function bootstrap:dropdown($element as element(), $items as element(li)*) as element(div) {
-  let $id := replace($element/@id, '#', '') return
-  <div class="dropdown">
-    { copy $btn := $element 
-      modify  (insert nodes (bootstrap:attributes(map { 'type':'button', 'data-toggle': 'dropdown', 
+declare function bootstrap:dropdown($container as element(*), $button as element(), $items as element(li)*) as element(*) {
+  let $id := replace($button/@id, '#', '') return
+  copy $out := $container modify insert nodes (
+    attribute class {'dropdown' },  
+    copy $btn := $button 
+    modify  (insert nodes (bootstrap:attributes(map { 'type':'button', 'data-toggle': 'dropdown', 
               'aria-haspopup': 'true', 'aria-extended': 'true'})) as first into $btn,
                insert node <span class="caret"></span> as last into $btn )
-      return $btn 
-    }
+    return $btn, 
     <ul class="dropdown-menu" role="menu" aria-labelledby="{$id}">
       {$items ! copy $out := . modify insert node attribute role {"presentation"} into $out return $out}
+    </ul>
+  ) into $out
+  return $out
+};
+
+declare function bootstrap:dropdown($button as element(), $items as element()*) as element(div) {
+  let $container := <div /> return
+  bootstrap:dropdown(<div />, $button, $items)
+};
+
+declare function bootstrap:scrollspy($element as element(*), $nav as element(div)) {
+  copy $out := $element modify insert (
+    attribute style {$element/@style || ' position:relative;'},
+    attribute data-spy {'scroll'},
+    attribute data-target {'#' || $nav/@id}
+  ) into $out 
+  return $out
+};
+
+declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) {
+  let $nav := (
+    let $links := for $section in $element/*[@id] return <a href="#{$section/@id}">{$section/text()}</a>
+    return bootstrap:nav($id, $links, $style))
+  return bootstrap:scrollspy($element, $nav)
+};
+
+declare function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div) {
+  <div id="{$id}>
+    <ul class="nav {($style, 'nav-tabs')[1]}">
+      {for $link at $i in $links return
+       <li role="presentation">
+        {if($i = 1) then attribute class {'active'} else ()}
+        {$link}
+       </li>
     </ul>
   </div>
 };
 
+declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div) {
+  <div class="progress">
+    <div class="progress-bar {$style}" role="progressbar" aria-valuenow="{$percent}" aria-valuemin="0" 
+         aria-valuemax="100" style="width:{$percent}%;min-width:2%">
+      <span>
+        {if($showValue) then attribute class {'sr-only'} else ()}
+        {$percent}%
+      </span>
+    </div>
+  </div>
+};
+
+declare function bootstrap:progress-bar($percent as xs:integer) as element(div) {
+  bootstrap:progress-bar($percent, ())
+};
+
+declare function bootstrap:collapse($control as node(), $contents as node()*) as element(div) {
+  let $id := replace($control/(@href|@data-target), '#', '') return
+  <div class="collapse" id="{$id}">
+    {$contents}
+  </div>
+};
