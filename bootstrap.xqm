@@ -161,7 +161,7 @@ declare function bootstrap:tooltip($element as element(), $placement as xs:strin
 declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as element(div) {
   let $tabs-out := 
     for $key at $i in map:keys($tabs) 
-    let $id := lower-case($name) 
+    let $id := lower-case($key) 
     return
       (<li role="presentation">
         {if($i = 1) then attribute class {'active'} else ()}
