@@ -196,7 +196,7 @@ declare function bootstrap:modal($toggle as element(), $title as xs:string,
         </div>
       </div>
     </div>
-  </div>)
+  </div>
 };
 
 declare function bootstrap:attributes($element as node(), $items as item()) as node()* {
