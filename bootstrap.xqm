@@ -154,7 +154,7 @@ declare function bootstrap:popover($element as element(), $placement as xs:strin
   return $out
 };
 
-declare function bootstrap:tooltip($element as element() $placement as xs:string, $title as xs:string) {
+declare function bootstrap:tooltip($element as element(), $placement as xs:string, $title as xs:string) {
   bootstrap:popover($element, $placement, $title, (), 'tooltip')
 };
 
