@@ -190,7 +190,10 @@ declare function bootstrap:modal($toggle as element(), $title as xs:string,
           <h4 class="modal-title" id="{$id}Label">{$title}</h4>
         </div>
         <div class="modal-body">{$body}</div>
-        {if($footer) then <div class="modal-footer">{$footer}</div> else ()}
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          {$footer}
+        </div>
       </div>
     </div>
   </div>)
