@@ -141,4 +141,39 @@ declare function bootstrap:grid($items as item(), $columns as xs:integer) as nod
      bootstrap:row($group, $group ! (12 div $columns), ())
 };
 
+declare function bootstrap:popover($element as element(), $placement as xs:string, $title as xs:string?,
+                                   $body as xs:string?, $type as xs:string?) as element() {
+  copy $out := $element 
+  modify insert nodes (
+    attribute type { 'button' },
+    attribute data-toggle { if($type) then $type else 'popover' },
+    if($title) then attribute title { $title } else (),
+    attribute data-placement { $placement },
+    if($body) then attribute data-content { $body } else ()
+  ) into $out
+  return $out
+};
+
+declare function bootstrap:tooltip($element as element() $placement as xs:string, $title as xs:string) {
+  bootstrap:popover($element, $placement, $title, (), 'tooltip')
+};
+
+declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as element(div) {
+  let $tabs-out := 
+    for $key at $i in map:keys($tabs) 
+    let $id := lower-case($name) 
+    return
+      (<li role="presentation">
+        {if($i = 1) then attribute class {'active'} else ()}
+        <a href="#{$id}" aria-controls="{$id}" role="tab" data-toggle="{($style, 'tab')[1]}">{$key}</a>
+      </li>,
+      <div role="tabpanel" id="{$id}" class="tab-pane{if($i = 1) then ' active' else ()}">
+         {$tabs($key)}
+      </div>)
+  return
+    <div role="tabpanel">
+      <ul class="nav nav-{($style, 'tab')[1]}s" role="tablist">{$tabs-out/li}</ul>
+      <div class="tab-content">{$tabs-out/div}</div>
+    </div>
+};
 
