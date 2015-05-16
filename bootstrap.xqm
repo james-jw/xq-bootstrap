@@ -242,13 +242,14 @@ declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $
 };
 
 declare function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div) {
-  <div id="{$id}>
+  <div id="{$id}">
     <ul class="nav {($style, 'nav-tabs')[1]}">
       {for $link at $i in $links return
        <li role="presentation">
         {if($i = 1) then attribute class {'active'} else ()}
         {$link}
        </li>
+      }
     </ul>
   </div>
 };
