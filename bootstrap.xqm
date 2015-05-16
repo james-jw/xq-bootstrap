@@ -177,3 +177,22 @@ declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as e
     </div>
 };
 
+declare function bootstrap:modal($toggle as element(), $title as xs:string, 
+                                 $body as node()*, $footer as node()*) {
+  let $id := replace($toggle/@data-target/text(), '#', '') return
+  <div class="modal fade" id="{$id}" tabindex="-1" 
+       role="dialog" aria-labelledby="{$id}Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&amp;times;</span></button>
+          <h4 class="modal-title" id="{$id}Label">{$title}</h4>
+        </div>
+        <div class="modal-body">{$body}</div>
+        {if($footer) then <div class="modal-footer">{$footer}</div> else ()}
+      </div>
+    </div>
+  </div>)
+};
+
