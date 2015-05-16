@@ -178,11 +178,11 @@ declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as e
 };
 
 declare function bootstrap:modal($toggle as element(), $title as xs:string, 
-                                 $body as node()*, $footer as node()*) {
-  let $id := replace($toggle/@data-target/text(), '#', '') return
+                                 $body as node()*, $footer as node()*, $size as xs:string?) {
+  let $id := replace($toggle/@data-target, '#', '') return
   <div class="modal fade" id="{$id}" tabindex="-1" 
        role="dialog" aria-labelledby="{$id}Label" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog {if($size) then 'modal-' || $size else ()}">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -197,5 +197,25 @@ declare function bootstrap:modal($toggle as element(), $title as xs:string,
       </div>
     </div>
   </div>)
+};
+
+declare function bootstrap:attributes($element as node(), $items as item()) as node()* {
+  $key in map:keys($items) return attribute {$key} {$items($key)})
+};
+
+declare function bootstrap:divider() as element(li) { <li class="divider" role="presentation"></li> };
+declare function bootstrap:dropdown($element as element(), $items as element(li)*) as element(div) {
+  let $id := replace($element/@id, '#', '') return
+  <div class="dropdown">
+    { copy $btn := $element 
+      modify  (insert nodes (bootstrap:attributes(map { 'type':'button', 'data-toggle': 'dropdown', 
+              'aria-haspopup': 'true', 'aria-extended': 'true'})) as first into $btn,
+               insert node <span class="caret"></span> as last into $btn )
+      return $btn 
+    }
+    <ul class="dropdown-menu" role="menu" aria-labelledby="{$id}">
+      {$items ! copy $out := . modify insert node attribute role {"presentation"} into $out return $out}
+    </ul>
+  </div>
 };
 
