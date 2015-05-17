@@ -1,5 +1,6 @@
 module namespace bootstrap = 'http://jw.bootstrap';
 
+(: Creates a head object with the provided title and contents including the basic meta tags :)
 declare function bootstrap:head($title as xs:string, $contents as node()*) as node() {
   <head>
     <meta charset="utf-8" />
@@ -10,10 +11,12 @@ declare function bootstrap:head($title as xs:string, $contents as node()*) as no
   </head>
 };
 
+(: Bootstrap a titleless basic head :)
 declare function bootstrap:head() as node() {
   bootstrap:head('', ())
 };
 
+(: Creates the final html output node with the provided page contents, head and navbar. :)
 declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as node() {
   <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
      {$head}
@@ -24,7 +27,12 @@ declare function bootstrap:html($contents as node()*, $head as node(), $nav as n
   </html>
 };
 
-declare function bootstrap:table($array as item(), $class as xs:string*, $numbered as xs:boolean) as node() {
+(: Creates a table with rows for each map in the array and a column for the distinct key names 
+  @param $array - Array of maps to generate table from
+  @param $class - Bootstrap 3 table css class (striped, etc)
+  @Param $numbered - Include a row header with the row number
+:)
+declare function bootstrap:table($array as array(map(*)), $class as xs:string*, $numbered as xs:boolean) as node() {
   let $keys := distinct-values($array?* ! map:keys(.))
   return
     <table class="{('table', $class)}">
@@ -37,7 +45,11 @@ declare function bootstrap:table($array as item()) as node() {
   bootstrap:table($array, (), false())
 };
 
-declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as node() {
+(: Generates a thead node with the provied $headers 
+  @param $headers - list of string values to use as headers
+  @param $numbered - includes a title row as first header with value '#'
+:)
+declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as element(thead) {
   <thead>
    { if($numbered) then <th>#</th> else ()}
    { for $header in $headers return <th>{$header}</th> }
