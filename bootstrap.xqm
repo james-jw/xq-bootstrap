@@ -200,7 +200,7 @@ declare function bootstrap:modal($toggle as element(), $title as xs:string,
 };
 
 declare function bootstrap:attributes($element as node(), $items as item()) as node()* {
-  for $key in map:keys($items) return attribute {$key} {$items($key)})
+  for $key in map:keys($items) return attribute {$key} {$items($key)}
 };
 
 declare function bootstrap:divider() as element(li) { <li class="divider" role="presentation"></li> };
