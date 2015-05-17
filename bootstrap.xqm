@@ -270,7 +270,7 @@ declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:str
 };
 
 declare function bootstrap:progress-bar($percent as xs:integer) as element(div) {
-  bootstrap:progress-bar($percent, ())
+  bootstrap:progress-bar($percent, (), true())
 };
 
 declare function bootstrap:collapse($control as node(), $contents as node()*) as element(div) {
