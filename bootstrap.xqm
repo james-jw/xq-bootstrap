@@ -229,7 +229,7 @@ declare function bootstrap:dropdown($button as element(), $items as element()*) 
 };
 
 declare function bootstrap:scrollspy($element as element(*), $nav as element(div)) {
-  copy $out := $element modify insert (
+  copy $out := $element modify insert nodes (
     attribute style {$element/@style || ' position:relative;'},
     attribute data-spy {'scroll'},
     attribute data-target {'#' || $nav/@id}
