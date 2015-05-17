@@ -2,7 +2,7 @@ module namespace bootstrap = 'http://jw.bootstrap';
 
 (: Creates a head object with the provided title and contents including the basic meta tags :)
 declare function bootstrap:head($title as xs:string, $contents as node()*) as element() {
-  <head xmlns="http://www.w3.org/1999/xhtml" >
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +18,7 @@ declare function bootstrap:head() as node() {
 
 (: Creates the final html output node with the provided page contents, head and navbar. :)
 declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as element() {
-  <html xmlns="http://www.w3.org/1999/xhtml">
+  <html>
      {$head}
      <body>
        {$nav}
