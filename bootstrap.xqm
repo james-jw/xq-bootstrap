@@ -214,7 +214,10 @@ declare function bootstrap:dropdown($container as element(*), $button as element
                insert node <span class="caret"></span> as last into $btn )
     return $btn, 
     <ul class="dropdown-menu" role="menu" aria-labelledby="{$id}">
-      {$items ! copy $out := . modify insert node attribute role {"presentation"} into $out return $out}
+      {for $item in $items return
+       copy $out := $item
+       modify insert node attribute role {"presentation"} into $out 
+       return $out}
     </ul>
   ) into $out
   return $out
