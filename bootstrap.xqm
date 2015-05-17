@@ -17,8 +17,8 @@ declare function bootstrap:head() as node() {
 };
 
 (: Creates the final html output node with the provided page contents, head and navbar. :)
-declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as node() {
-  <html>
+declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as element() {
+  <html xmlns="http://www.w3.org/1999/xhtml">
      {$head}
      <body>
        {$nav}
