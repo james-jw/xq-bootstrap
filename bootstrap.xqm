@@ -145,7 +145,6 @@ declare function bootstrap:popover($element as element(), $placement as xs:strin
                                    $body as xs:string?, $type as xs:string?) as element() {
   copy $out := $element 
   modify insert nodes (
-    attribute type { 'button' },
     attribute data-toggle { if($type) then $type else 'popover' },
     if($title) then attribute title { $title } else (),
     attribute data-placement { $placement },
