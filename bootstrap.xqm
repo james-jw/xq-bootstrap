@@ -199,7 +199,7 @@ declare function bootstrap:modal($toggle as element(), $title as xs:string,
   </div>
 };
 
-declare function bootstrap:attributes($element as node(), $items as item()) as node()* {
+declare function bootstrap:attributes($items as item()) as node()* {
   for $key in map:keys($items) return attribute {$key} {$items($key)}
 };
 
