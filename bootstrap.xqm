@@ -32,7 +32,7 @@ declare function bootstrap:html($contents as node()*, $head as node(), $nav as n
   @param $class - Bootstrap 3 table css class (striped, etc)
   @Param $numbered - Include a row header with the row number
 :)
-declare function bootstrap:table($array as array(map(*)), $class as xs:string*, $numbered as xs:boolean) as node() {
+declare function bootstrap:table($array as array(*), $class as xs:string*, $numbered as xs:boolean) as node() {
   let $keys := distinct-values($array?* ! map:keys(.))
   return
     <table class="{('table', $class)}">
