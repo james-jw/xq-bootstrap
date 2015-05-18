@@ -1,5 +1,12 @@
 module namespace bootstrap = 'http://jw.bootstrap';
 
+declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div) {
+  <div class="jumbotron">
+    <h1>{$title}</h1>
+    {if($content) then <div class="alert alert-{($style, 'primary')[1]}">{$content}</div> else ()}
+  </div>
+};
+
 (: Creates a head object with the provided title and contents including the basic meta tags :)
 declare function bootstrap:head($title as xs:string, $contents as node()*) as element() {
   <head>
