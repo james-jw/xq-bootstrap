@@ -3,7 +3,7 @@ module namespace bootstrap = 'http://jw.bootstrap';
 declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div) {
   <div class="jumbotron">
     <h1>{$title}</h1>
-    {if($content) then <div class="alert bg-{($style, 'primary')[1]}">{$content}</div> else ()}
+    {if($content) then <div class="alert {($style, 'bg-primary')[1]}">{$content}</div> else ()}
   </div>
 };
 
