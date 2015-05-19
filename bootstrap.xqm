@@ -23,7 +23,7 @@ declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?
  : @title Title of the page
  : @contents Additional elements to add to the head 
  :)
-declare function bootstrap:head($title as xs:string, $contents as node()*) as element() {
+declare function bootstrap:head($title as xs:string, $contents as node()*) as element(head) {
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,7 +43,7 @@ declare function bootstrap:head() as node() {
  : @head The head element to use for the page
  : @nav A nav element for use on the page
  :)
-declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as element() {
+declare function bootstrap:html($contents as item()*, $head as node(), $nav as node()?) as element(html) {
   <html>
      {$head}
      <body>
@@ -58,7 +58,7 @@ declare function bootstrap:html($contents as node()*, $head as node(), $nav as n
  : @param $class - Style class to apply to the table
  : @Param $numbered - Denotes whether a row header containing the row index should be generated
 :)
-declare function bootstrap:table($array as array(*), $class as xs:string*, $numbered as xs:boolean) as element(table) {
+declare function bootstrap:table($array as array(map(xs:string, item()*)), $class as xs:string*, $numbered as xs:boolean) as element(table) {
   let $keys := distinct-values($array?* ! map:keys(.))
   return
     <table class="{('table', $class)}">
@@ -70,7 +70,7 @@ declare function bootstrap:table($array as array(*), $class as xs:string*, $numb
 (: Create a table with rows for each map in the array and a column for the distinct key names
  : @array Array of maps to generate the table from
  :)
-declare function bootstrap:table($array as array(*)) as element(table) {
+declare function bootstrap:table($array as array(map(xs:string, item()*))) as element(table) {
   bootstrap:table($array, (), false())
 };
 
@@ -90,10 +90,10 @@ declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:bo
  : @keys List of property keys to generate columns for
  : @numbered Denotes whether a numbered header row should be generated
  :)
-declare function bootstrap:table-body($array as item()*, $keys as xs:string*, $numbered as xs:boolean) as element(tbody) {
+declare function bootstrap:table-body($array as array(map(xs:string, item()*)), $keys as xs:string*, $numbered as xs:boolean) as element(tbody) {
   <tbody>
     {
-      for $item at $i in $array return
+      for $item at $i in $array?* return
         <tr>
           { if($numbered) then <th>{$i}</th> else ()}
           { for $key in $keys return <td>{$item($key)}</td> }        
@@ -105,7 +105,7 @@ declare function bootstrap:table-body($array as item()*, $keys as xs:string*, $n
 (: Generates a breadcrumb element from the provided elements
  : @array Items to generate the breadcrumb from. Each item should have a title and href property.
  :)
-declare function bootstrap:breadcrumbs($array as array(map(*))) as element(ol) {
+declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol) {
   bootstrap:breadcrumbs($array, function ($item, $i) { 
     if($i = count($array))
      then <li class="active">{$item?title}</li>
