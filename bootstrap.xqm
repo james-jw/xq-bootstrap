@@ -263,7 +263,7 @@ declare function bootstrap:tooltip($element as element(*), $placement as xs:stri
  : @tabs Map of tags to be used in tab panel. Key is the title of the tag and the value is its content
  : @style Style of tab panel to create. Defaults to standard styling
  :)
-declare function bootstrap:tab-panel($tabs as map(xs:string,item()), $style as xs:string?) as element(div) as element(div) {
+declare function bootstrap:tab-panel($tabs as map(xs:string,item()), $style as xs:string?) as element(div) {
   let $tabs-out := 
     for $key at $i in map:keys($tabs) 
     let $id := lower-case($key) 
