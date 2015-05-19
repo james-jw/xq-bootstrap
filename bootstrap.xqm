@@ -8,9 +8,9 @@ module namespace bootstrap = 'http://jw.bootstrap';
 
 (:~ 
  : Generates a jumbotron
- : @param $title Title to display
- : @param $content Content to place below title
- : @param $style Style class of the content's container
+ : @param Title to display
+ : @param Content to place below title
+ : @param Style class of the content's container
  :)
 declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div) {
   <div class="jumbotron">
