@@ -189,8 +189,8 @@ declare function bootstrap:list-group($content as array(*)) as element(ul) {
 
 (:~  Creates a composte list  
  : @param Content to place within the list group.
- : @param-key Path to the title for each content item
- : @param-key Path to the content for each content item
+ : @param Path to the title for each content item
+ : @param Path to the content for each content item
  :)
 declare function bootstrap:list-group-custom($content as array(*), $title-key as xs:string, $content-key as xs:string) as element(ul) {
   bootstrap:list-group($content, function ($item) {
