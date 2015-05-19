@@ -105,7 +105,7 @@ declare function bootstrap:table-body($array as item()*, $keys as xs:string*, $n
 (: Generates a breadcrumb element from the provided elements
  : @array Items to generate the breadcrumb from. Each item should have a title and href property.
  :)
-declare function bootstrap:breadcrumbs($array as array(map(*)) as element(ol) {
+declare function bootstrap:breadcrumbs($array as array(map(*))) as element(ol) {
   bootstrap:breadcrumbs($array, function ($item, $i) { 
     if($i = count($array))
      then <li class="active">{$item?title}</li>
