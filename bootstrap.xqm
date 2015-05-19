@@ -1,5 +1,17 @@
+(:
+ : Provides helper functions for generating bootstrap component markup
+ : @author James Wright
+ : @version 1.0
+ : @updated 5/19/2015
+ :)
 module namespace bootstrap = 'http://jw.bootstrap';
 
+(:
+ : Generates a jumbotron
+ : @$title Title to display
+ : @content Content to place below title
+ : @style Style class of the content's container
+ :)
 declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div) {
   <div class="jumbotron">
     <h1>{$title}</h1>
@@ -7,7 +19,10 @@ declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?
   </div>
 };
 
-(: Creates a head object with the provided title and contents including the basic meta tags :)
+(: Creates a head object with standard meta tags 
+ : @title Title of the page
+ : @contents Additional elements to add to the head 
+ :)
 declare function bootstrap:head($title as xs:string, $contents as node()*) as element() {
   <head>
     <meta charset="utf-8" />
@@ -23,7 +38,11 @@ declare function bootstrap:head() as node() {
   bootstrap:head('', ())
 };
 
-(: Creates the final html output node with the provided page contents, head and navbar. :)
+(: Creates the final html output node with the provided page contents, head and navbar. 
+ : @contents Page contents to place within the main page container div
+ : @head The head element to use for the page
+ : @nav A nav element for use on the page
+ :)
 declare function bootstrap:html($contents as node()*, $head as node(), $nav as node()?) as element() {
   <html>
      {$head}
@@ -35,9 +54,9 @@ declare function bootstrap:html($contents as node()*, $head as node(), $nav as n
 };
 
 (: Creates a table with rows for each map in the array and a column for the distinct key names 
-  @param $array - Array of maps to generate table from
-  @param $class - Bootstrap 3 table css class (striped, etc)
-  @Param $numbered - Include a row header with the row number
+ : @param $array - Array of maps to generate table from
+ : @param $class - Style class to apply to the table
+ : @Param $numbered - Denotes whether a row header containing the row index should be generated
 :)
 declare function bootstrap:table($array as array(*), $class as xs:string*, $numbered as xs:boolean) as node() {
   let $keys := distinct-values($array?* ! map:keys(.))
@@ -48,13 +67,16 @@ declare function bootstrap:table($array as array(*), $class as xs:string*, $numb
     </table> 
 };
 
+(: Create a table with rows for each map in the array and a column for the distinct key names
+ : @array Array of maps to generate the table from
+ :)
 declare function bootstrap:table($array as item()) as node() {
   bootstrap:table($array, (), false())
 };
 
 (: Generates a thead node with the provied $headers 
-  @param $headers - list of string values to use as headers
-  @param $numbered - includes a title row as first header with value '#'
+ : @param $headers - list of string values to use as headers
+ : @param $numbered - includes a title row as first header with value '#'
 :)
 declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as element(thead) {
   <thead>
@@ -63,7 +85,12 @@ declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:bo
   </thead>
 };
 
-declare function bootstrap:table-body($array as item()*, $keys as xs:string*, $numbered as xs:boolean) as node() {
+(: Generate a tbody element 
+ : @array Array of map items to geneate rows for
+ : @keys List of property keys to generate columns for
+ : @numbered Denotes whether a numbered header row should be generated
+ :)
+declare function bootstrap:table-body($array as item()*, $keys as xs:string*, $numbered as xs:boolean) as element(tbody) {
   <tbody>
     {
       for $item at $i in $array return
@@ -75,7 +102,9 @@ declare function bootstrap:table-body($array as item()*, $keys as xs:string*, $n
   </tbody>
 };
 
-(: assumes array has title and href keys :)
+(: Generates a breadcrumb element from the provided elements
+ : @array Items to generate the breadcrumb from. Each item should have a title and href property.
+ :)
 declare function bootstrap:breadcrumbs($array as item()) as node() {
   bootstrap:breadcrumbs($array, function ($item, $i) { 
     if($i = count($array))
@@ -86,58 +115,96 @@ declare function bootstrap:breadcrumbs($array as item()) as node() {
    })
 };
 
-declare function bootstrap:breadcrumbs($array as item(), $renderer ) as node() {
+(: Generates a breadcrumb element from the provided elements 
+ : @array Item to generate the breadcrumb from. Each item should have a title and href property.
+ : @rendered Function to generate a single breadcrumb item provided a map
+ :)
+declare function bootstrap:breadcrumbs($array as item(), $renderer as function(*)) as node() {
   <ol class="breadcrumb">{$array?* ! $renderer(.)}</ol> 
 };
 
 (: Creates a label of the specified type.
-   Types: default, primary, success, info, warning, danger :)
-declare function bootstrap:label($type as xs:string, $contents as item()) as node() {
+ : @type Type of label to create: default, primary, success, info, warning, danger 
+ : @contents Content to place within the label
+ :)
+declare function bootstrap:label($type as xs:string, $contents as item()*) as node() {
   <span class="label label-{$type}">{$contents}</span>
 };
 
-(: Creates a 'default' label with the supplied contents. :)
-declare function bootstrap:label($contents as item()) as node() {
+(: Creates a 'default' label with the supplied contents. 
+ : @contents Content to place within the label
+ :)
+declare function bootstrap:label($contents as item()*) as node() {
   bootstrap:label('default', $contents)
 };
 
-declare function bootstrap:badge($contents as item()) as node() {
+(: Creates a badge element
+ : @contents Content to place within the badge
+ :)
+declare function bootstrap:badge($contents as item()*) as node() {
   <span class="badge">{$contents}</span>
 };
 
+(: Generates a panel 
+ : @head Content to place within the head of the panel
+ : @body Content to place within the body of the panel
+ : @footer Content to place within the footer of the panel
+ : @style Style of panel to create.
+ :)
 declare function bootstrap:panel($head as node()?, $body as node()?, 
-                                 $footer as node()?, $type as xs:string) as node() {
-  <div class="panel panel-{$type}">
+                                 $footer as node()?, $style as xs:string) as node() {
+  <div class="panel panel-{$style}">
     {if($head) then <div class="panel-heading">{$head}</div> else ()}
     {if($body) then <div class="panel-body">{$body}</div> else ()}
     {if($footer) then <div class="panel-footer">{$footer}</div> else ()}
   </div>
 };
 
+(: Generates a default panel
+ : @head Content to place within the head of the panel
+ : @body Content to place within the body of the panel
+ : @footer Content to place within the footer of the panel
+ :)
 declare function bootstrap:panel($head as node()?, $body as node()?, $footer as node()?) as node() {
   bootstrap:panel($head, $body, $footer, 'default')                                   
 };
 
-declare function bootstrap:list-group($items as item(), $renderer as item()) as node() {
-  <ul class="list-group">{$items?* ! $renderer(.)}</ul>
+(: Generates a list group 
+ : @content Content to place within the list group. Items will be automatically wrapped in ul elements
+ : @renderer Function to render the content
+ :)
+declare function bootstrap:list-group($content as array(*), $renderer as function(*)) as node() {
+  <ul class="list-group">{$content?* ! $renderer(.)}</ul>
 }; 
 
-declare function bootstrap:list-group($items as item()) as node() {
-  bootstrap:list-group($items, function ($item) {
+(: Generates a list group 
+ : @content Content to place within the list group. Items will be automatically wrapped in ul elements
+ :)
+declare function bootstrap:list-group($content as item()) as node() {
+  bootstrap:list-group($content, function ($item) {
     <li class="list-group-item">{$item}</li>
   })
 };
 
-(: Creates a custom list from the array pulling the heading and text from the supplied keys respectively :)
-declare function bootstrap:list-group-custom($items as item(), $keys as item()*) as node() {
-  bootstrap:list-group($items, function ($item) {
+(: Creates a composte list  
+ : @content Content to place within the list group.
+ : @title-key Path to the title for each content item
+ : @content-key Path to the content for each content item
+ :)
+declare function bootstrap:list-group-custom($content as array(), $title-key as xs:string, $content-key as xs:string) as node() {
+  bootstrap:list-group($content, function ($item) {
     <li class="list-group-item">
-      <h4 class="list-group-item-heading">{$item($keys[1])}</h4>
-      <p> class="list-group-item-text">{$item($keys[2])}</p>
+      <h4 class="list-group-item-heading">{$item($title-key)}</h4>
+      <p> class="list-group-item-text">{$item($content-key)}</p>
     </li>
   })
 };
 
+(: Generates a grid row with the provided content, widths and offsets
+ : @items Content to generate each row from
+ : @widths List of widths for each content item provided.
+ : @offsets List of offsets for each content item provided. If offset is not provided, its assumed to be not offset.
+ :)
 declare function bootstrap:row($items as item()*, $widths as xs:integer*, $offsets as xs:integer*) as node() {
   <div class="row">
     {
@@ -152,6 +219,10 @@ declare function bootstrap:row($items as item()*, $widths as xs:integer*, $offse
   </div>
 };
 
+(: Generate a grid 
+ : @items Content to generate the grid from.
+ : @columns Number of items per row
+ :)
 declare function bootstrap:grid($items as item(), $columns as xs:integer) as node()* {
   for tumbling window $group in $items?*
   start at $i when true()
@@ -160,11 +231,18 @@ declare function bootstrap:grid($items as item(), $columns as xs:integer) as nod
      bootstrap:row($group, $group ! (12 div $columns), ())
 };
 
+(: Adds popover functionality to the provided element 
+ : @element Node to add the popover functionality too
+ : @placement Location where popover should appear: left, right, top, bottom.
+ : @title Title of the popover
+ : @body Text body of the popover
+ : @style Style of the popover
+ :)
 declare function bootstrap:popover($element as element(), $placement as xs:string, $title as xs:string?,
-                                   $body as xs:string?, $type as xs:string?) as element() {
+                                   $body as xs:string?, $style as xs:string?) as element() {
   copy $out := $element 
   modify insert nodes (
-    attribute data-toggle { if($type) then $type else 'popover' },
+    attribute data-toggle { if($style) then $style else 'popover' },
     if($title) then attribute title { $title } else (),
     attribute data-placement { $placement },
     if($body) then attribute data-content { $body } else ()
@@ -172,10 +250,19 @@ declare function bootstrap:popover($element as element(), $placement as xs:strin
   return $out
 };
 
+(: Adds popover functionality to the provided element
+ : @element Node to add the popover functionality too
+ : @placement Location where popover should appear: left, right, top, bottom.
+ : @title Title of the popover
+ :)
 declare function bootstrap:tooltip($element as element(), $placement as xs:string, $title as xs:string) {
   bootstrap:popover($element, $placement, $title, (), 'tooltip')
 };
 
+(: Generates a tab panel 
+ : @tabs Map of tags to be used in tab panel. Key is the title of the tag and the value is its content
+ : @style Style of tab panel to create. Defaults to standard styling
+ :)
 declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as element(div) {
   let $tabs-out := 
     for $key at $i in map:keys($tabs) 
@@ -195,6 +282,13 @@ declare function bootstrap:tab-panel($tabs as item(), $style as xs:string?) as e
     </div>
 };
 
+(: Generates a modal dialog from the provided toggle element 
+ : @toggle Button or anchor element with an id attribute to toggle the modal dialog
+ : @title Title of the modal window
+ : @body Content of the modal body
+ : @footer Content of the modal footer.
+ : @size Size of the dialog: 'lg' or 'sm'
+ :)
 declare function bootstrap:modal($toggle as element(), $title as xs:string, 
                                  $body as node()*, $footer as node()*, $size as xs:string?) {
   let $id := replace($toggle/@data-target, '#', '') return
@@ -217,11 +311,21 @@ declare function bootstrap:modal($toggle as element(), $title as xs:string,
   </div>
 };
 
-declare function bootstrap:attributes($items as item()) as node()* {
+(: Generates a set of attribute elements 
+ : @items Map to use for generating the attributes. 
+ :)
+declare function bootstrap:attributes($items as map(*)) as node()* {
   for $key in map:keys($items) return attribute {$key} {$items($key)}
 };
 
+(: Generates a dropdown divider element :)
 declare function bootstrap:divider() as element(li) { <li class="divider" role="presentation"></li> };
+
+(: Adds dropdown capabilities to a provided button or anchor 
+ : @container Element which will contain the dropdown button or anchor.
+ : @button Button or anchor to add the drop down too
+ : @items Elements to place in the dropdown
+ :)
 declare function bootstrap:dropdown($container as element(*), $button as element(), $items as element(li)*) as element(*) {
   let $id := replace($button/@id, '#', '') return
   copy $out := $container modify insert nodes (
@@ -241,11 +345,19 @@ declare function bootstrap:dropdown($container as element(*), $button as element
   return $out
 };
 
+(: Adds dropdown capabilities to a provided button or anchor 
+ : @button Button or anchor to add the drop down too
+ : @items Elements to place in the dropdown
+ :)
 declare function bootstrap:dropdown($button as element(), $items as element()*) as element(div) {
   let $container := <div /> return
   bootstrap:dropdown(<div />, $button, $items)
 };
 
+(: Adds scrollspy capabilities to the provided element 
+ : @element Node to spy on. 
+ : @nav Navigation bar for the spied element
+ :)
 declare function bootstrap:scrollspy($element as element(*), $nav as element(div)) {
   copy $out := $element modify insert nodes (
     attribute style {$element/@style || ' position:relative;'},
@@ -255,6 +367,11 @@ declare function bootstrap:scrollspy($element as element(*), $nav as element(div
   return $out
 };
 
+(: Adds scrollspy capabilities to the provided element 
+ : @id Id to give the scrollspy group
+ : @element Node containing content to spy on. 
+ : @style Style of nav bar to generate for the spied content. A nav item is generated for each id content provided.
+ :)
 declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) {
   let $nav := (
     let $links := for $section in $element/*[@id] return <a href="#{$section/@id}">{$section/text()}</a>
@@ -262,6 +379,11 @@ declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $
   return bootstrap:scrollspy($element, $nav)
 };
 
+(: Generates a nav bar 
+ : @id Id to provide the navigation bar
+ : @links Anchor elements to populate the nav bar
+ : @stytle Style of nav bar to generate
+ :)
 declare function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div) {
   <div id="{$id}">
     <ul class="nav {($style, 'nav-tabs')[1]}">
@@ -275,6 +397,10 @@ declare function bootstrap:nav($id as xs:string, $links as element(a), $style as
   </div>
 };
 
+(: Generates a progress bar 
+ : @percent Value of the progress bar.
+ : @style Style of the progress bar.
+ :)
 declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div) {
   <div class="progress">
     <div class="progress-bar {$style}" role="progressbar" aria-valuenow="{$percent}" aria-valuemin="0" 
@@ -286,11 +412,18 @@ declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:str
     </div>
   </div>
 };
-
+ 
+(: Generates a progress bar 
+ : @percent Value of the progress bar.
+ :)
 declare function bootstrap:progress-bar($percent as xs:integer) as element(div) {
   bootstrap:progress-bar($percent, (), true())
 };
 
+(: Adds collapsability to the provided contents 
+ : @control Button or anchor to toggle the contents collapsile. 
+ : @contents Content to place withing the collapsable div
+ :)
 declare function bootstrap:collapse($control as node(), $contents as node()*) as element(div) {
   let $id := replace($control/(@href|@data-target), '#', '') return
   <div class="collapse" id="{$id}">
