@@ -1,4 +1,4 @@
-(:
+(:~ 
  : Provides helper functions for generating bootstrap component markup
  : @author James Wright
  : @version 1.0
@@ -6,7 +6,7 @@
  :)
 module namespace bootstrap = 'http://jw.bootstrap';
 
-(:
+(:~ 
  : Generates a jumbotron
  : @param $title Title to display
  : @param $content Content to place below title
@@ -19,7 +19,8 @@ declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?
   </div>
 };
 
-(: Creates a head object with standard meta tags 
+(:~  
+ : Creates a head object with standard meta tags 
  : @param $title Title of the page
  : @param $contents Additional elements to add to the head 
  :)
@@ -33,12 +34,12 @@ declare function bootstrap:head($title as xs:string, $contents as node()*) as el
   </head>
 };
 
-(: Bootstrap a titleless basic head :)
+(:~  Bootstrap a titleless basic head :)
 declare function bootstrap:head() as node() {
   bootstrap:head('', ())
 };
 
-(: Creates the final html output node with the provided page contents, head and navbar. 
+(:~  Creates the final html output node with the provided page contents, head and navbar. 
  : @param $contents Page contents to place within the main page container div
  : @param $head The head element to use for the page
  : @param $nav A nav element for use on the page
@@ -53,7 +54,7 @@ declare function bootstrap:html($contents as item()*, $head as node(), $nav as n
   </html>
 };
 
-(: Creates a table with rows for each map in the array and a column for the distinct key names 
+(:~  Creates a table with rows for each map in the array and a column for the distinct key names 
  : @param $param $array - Array of maps to generate table from
  : @param $param $class - Style class to apply to the table
  : @param $Param $numbered - Denotes whether a row header containing the row index should be generated
@@ -67,14 +68,14 @@ declare function bootstrap:table($array as array(map(xs:string, item()*)), $clas
     </table> 
 };
 
-(: Create a table with rows for each map in the array and a column for the distinct key names
+(:~  Create a table with rows for each map in the array and a column for the distinct key names
  : @param $array Array of maps to generate the table from
  :)
 declare function bootstrap:table($array as array(map(xs:string, item()*))) as element(table) {
   bootstrap:table($array, (), false())
 };
 
-(: Generates a thead node with the provied $headers 
+(:~  Generates a thead node with the provied $headers 
  : @param $param $headers - list of string values to use as headers
  : @param $param $numbered - includes a title row as first header with value '#'
 :)
@@ -85,7 +86,7 @@ declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:bo
   </thead>
 };
 
-(: Generate a tbody element 
+(:~  Generate a tbody element 
  : @param $array Array of map items to geneate rows for
  : @param $keys List of property keys to generate columns for
  : @param $numbered Denotes whether a numbered header row should be generated
@@ -102,7 +103,7 @@ declare function bootstrap:table-body($array as array(map(xs:string, item()*)), 
   </tbody>
 };
 
-(: Generates a breadcrumb element from the provided elements
+(:~  Generates a breadcrumb element from the provided elements
  : @param $array Items to generate the breadcrumb from. Each item should have a title and href property.
  :)
 declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol) {
@@ -115,7 +116,7 @@ declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*)))
    })
 };
 
-(: Generates a breadcrumb element from the provided elements 
+(:~  Generates a breadcrumb element from the provided elements 
  : @param $array Item to generate the breadcrumb from. Each item should have a title and href property.
  : @param $rendered Function to generate a single breadcrumb item provided a map
  :)
@@ -123,7 +124,7 @@ declare function bootstrap:breadcrumbs($array as array(*), $renderer as function
   <ol class="breadcrumb">{$array?* ! $renderer(.)}</ol> 
 };
 
-(: Creates a label of the specified type.
+(:~  Creates a label of the specified type.
  : @param $type Type of label to create: default, primary, success, info, warning, danger 
  : @param $contents Content to place within the label
  :)
@@ -131,21 +132,21 @@ declare function bootstrap:label($type as xs:string, $contents as item()*) as el
   <span class="label label-{$type}">{$contents}</span>
 };
 
-(: Creates a 'default' label with the supplied contents. 
+(:~  Creates a 'default' label with the supplied contents. 
  : @param $contents Content to place within the label
  :)
 declare function bootstrap:label($contents as item()*) as element(span) {
   bootstrap:label('default', $contents)
 };
 
-(: Creates a badge element
+(:~  Creates a badge element
  : @param $contents Content to place within the badge
  :)
 declare function bootstrap:badge($contents as item()*) as element(span) {
   <span class="badge">{$contents}</span>
 };
 
-(: Generates a panel 
+(:~  Generates a panel 
  : @param $head Content to place within the head of the panel
  : @param $body Content to place within the body of the panel
  : @param $footer Content to place within the footer of the panel
@@ -160,7 +161,7 @@ declare function bootstrap:panel($head as node()*, $body as node()*,
   </div>
 };
 
-(: Generates a default panel
+(:~  Generates a default panel
  : @param $head Content to place within the head of the panel
  : @param $body Content to place within the body of the panel
  : @param $footer Content to place within the footer of the panel
@@ -169,7 +170,7 @@ declare function bootstrap:panel($head as node()*, $body as node()*, $footer as 
   bootstrap:panel($head, $body, $footer, 'default')                                   
 };
 
-(: Generates a list group 
+(:~  Generates a list group 
  : @param $content Content to place within the list group. Items will be automatically wrapped in ul elements
  : @param $renderer Function to render the content
  :)
@@ -177,7 +178,7 @@ declare function bootstrap:list-group($content as array(*), $renderer as functio
   <ul class="list-group">{$content?* ! $renderer(.)}</ul>
 }; 
 
-(: Generates a list group 
+(:~  Generates a list group 
  : @param $content Content to place within the list group. Items will be automatically wrapped in ul elements
  :)
 declare function bootstrap:list-group($content as array(*)) as element(ul) {
@@ -186,7 +187,7 @@ declare function bootstrap:list-group($content as array(*)) as element(ul) {
   })
 };
 
-(: Creates a composte list  
+(:~  Creates a composte list  
  : @param $content Content to place within the list group.
  : @param $title-key Path to the title for each content item
  : @param $content-key Path to the content for each content item
@@ -200,7 +201,7 @@ declare function bootstrap:list-group-custom($content as array(*), $title-key as
   })
 };
 
-(: Generates a grid row with the provided content, widths and offsets
+(:~  Generates a grid row with the provided content, widths and offsets
  : @param $items Content to generate each row from
  : @param $widths List of widths for each content item provided.
  : @param $offsets List of offsets for each content item provided. If offset is not provided, its assumed to be not offset.
@@ -219,7 +220,7 @@ declare function bootstrap:row($items as item()*, $widths as xs:integer*, $offse
   </div>
 };
 
-(: Generate a grid 
+(:~  Generate a grid 
  : @param $items Content to generate the grid from.
  : @param $columns Number of items per row
  :)
@@ -231,7 +232,7 @@ declare function bootstrap:grid($items as array(*), $columns as xs:integer) as e
      bootstrap:row($group, $group ! (12 div $columns), ())
 };
 
-(: Adds popover functionality to the provided element 
+(:~  Adds popover functionality to the provided element 
  : @param $element Node to add the popover functionality too
  : @param $placement Location where popover should appear: left, right, top, bottom.
  : @param $title Title of the popover
@@ -250,7 +251,7 @@ declare function bootstrap:popover($element as element(*), $placement as xs:stri
   return $out
 };
 
-(: Adds popover functionality to the provided element
+(:~  Adds popover functionality to the provided element
  : @param $element Node to add the popover functionality too
  : @param $placement Location where popover should appear: left, right, top, bottom.
  : @param $title Title of the popover
@@ -259,7 +260,7 @@ declare function bootstrap:tooltip($element as element(*), $placement as xs:stri
   bootstrap:popover($element, $placement, $title, (), 'tooltip')
 };
 
-(: Generates a tab panel 
+(:~  Generates a tab panel 
  : @param $tabs Map of tags to be used in tab panel. Key is the title of the tag and the value is its content
  : @param $style Style of tab panel to create. Defaults to standard styling
  :)
@@ -282,7 +283,7 @@ declare function bootstrap:tab-panel($tabs as map(xs:string,item()), $style as x
     </div>
 };
 
-(: Generates a modal dialog from the provided toggle element 
+(:~  Generates a modal dialog from the provided toggle element 
  : @param $toggle Button or anchor element with an id attribute to toggle the modal dialog
  : @param $title Title of the modal window
  : @param $body Content of the modal body
@@ -311,17 +312,17 @@ declare function bootstrap:modal($toggle as element(*), $title as xs:string,
   </div>
 };
 
-(: Generates a set of attribute elements 
+(:~  Generates a set of attribute elements 
  : @param $items Map to use for generating the attributes. 
  :)
 declare function bootstrap:attributes($items as map(*)) as attribute()* {
   for $key in map:keys($items) return attribute {$key} {$items($key)}
 };
 
-(: Generates a dropdown divider element :)
+(:~  Generates a dropdown divider element :)
 declare function bootstrap:divider() as element(li) { <li class="divider" role="presentation"></li> };
 
-(: Adds dropdown capabilities to a provided button or anchor 
+(:~  Adds dropdown capabilities to a provided button or anchor 
  : @param $container Element which will contain the dropdown button or anchor.
  : @param $button Button or anchor to add the drop down too
  : @param $items Elements to place in the dropdown
@@ -345,7 +346,7 @@ declare function bootstrap:dropdown($container as element(*), $button as element
   return $out
 };
 
-(: Adds dropdown capabilities to a provided button or anchor 
+(:~  Adds dropdown capabilities to a provided button or anchor 
  : @param $button Button or anchor to add the drop down too
  : @param $items Elements to place in the dropdown
  :)
@@ -354,7 +355,7 @@ declare function bootstrap:dropdown($button as element(*), $items as element()*)
   bootstrap:dropdown(<div />, $button, $items)
 };
 
-(: Adds scrollspy capabilities to the provided element 
+(:~  Adds scrollspy capabilities to the provided element 
  : @param $element Node to spy on. 
  : @param $nav Navigation bar for the spied element
  :)
@@ -367,7 +368,7 @@ declare function bootstrap:scrollspy($element as element(*), $nav as element(div
   return $out
 };
 
-(: Adds scrollspy capabilities to the provided element 
+(:~  Adds scrollspy capabilities to the provided element 
  : @param $id Id to give the scrollspy group
  : @param $element Node containing content to spy on. 
  : @param $style Style of nav bar to generate for the spied content. A nav item is generated for each id content provided.
@@ -379,7 +380,7 @@ declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $
   return bootstrap:scrollspy($element, $nav)
 };
 
-(: Generates a nav bar 
+(:~  Generates a nav bar 
  : @param $id Id to provide the navigation bar
  : @param $links Anchor elements to populate the nav bar
  : @param $stytle Style of nav bar to generate
@@ -397,7 +398,7 @@ declare function bootstrap:nav($id as xs:string, $links as element(a), $style as
   </div>
 };
 
-(: Generates a progress bar 
+(:~  Generates a progress bar 
  : @param $percent Value of the progress bar.
  : @param $style Style of the progress bar.
  :)
@@ -413,14 +414,14 @@ declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:str
   </div>
 };
  
-(: Generates a progress bar 
+(:~  Generates a progress bar 
  : @param $percent Value of the progress bar.
  :)
 declare function bootstrap:progress-bar($percent as xs:integer) as element(div) {
   bootstrap:progress-bar($percent, (), true())
 };
 
-(: Adds collapsability to the provided contents 
+(:~  Adds collapsability to the provided contents 
  : @param $control Button or anchor to toggle the contents collapsile. 
  : @param $contents Content to place withing the collapsable div
  :)
