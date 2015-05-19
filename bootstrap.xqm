@@ -117,8 +117,8 @@ declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*)))
 };
 
 (:~  Generates a breadcrumb element from the provided elements 
- : @param $array Item to generate the breadcrumb from. Each item should have a title and href property.
- : @param $rendered Function to generate a single breadcrumb item provided a map
+ : @param $array Item to generate the breadcrumb from.
+ : @param $renderer Function to generate a single breadcrumb item provided a map
  :)
 declare function bootstrap:breadcrumbs($array as array(*), $renderer as function(*)) as element(ol) {
   <ol class="breadcrumb">{$array?* ! $renderer(.)}</ol> 
