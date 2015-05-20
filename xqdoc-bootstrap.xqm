@@ -13,7 +13,7 @@ declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
  : @param Xqdoc:function element containing function metadata
  : @return Html div element containing Bootstrap CSS3 markup
  :)
-declare function local:xqdoc-function-to-html($function as element(xqdoc:function)) as element(div) {
+declare function xqdoc-bootstrap:xqdoc-function-to-html($function as element(xqdoc:function)) as element(div) {
   <div class="section" id="{$function/xqdoc:name || $function/@arity}">
     <h4>{$function/xqdoc:name/text()}</h4>
     {$function/xqdoc:comment/xqdoc:description/text()}
@@ -44,7 +44,7 @@ declare function local:xqdoc-function-to-html($function as element(xqdoc:functio
  : @param Document to convert
  : @return Html div element containing Bootstrap CSS 3 markup
  :)
-declare function local:xqdoc-to-html($doc as element(xqdoc:xqdoc)) as element(div) {
+declare function xqdoc-bootstrap:xqdoc-to-html($doc as element(xqdoc:xqdoc)) as element(div) {
   let $module := $doc/xqdoc:module return
   <div class="section">
      <h1>{$module/xqdoc:name/text()}</h1>
