@@ -1,3 +1,9 @@
+(:~ 
+ : Generates Bootstrap 3 compliant html documentation
+ : @author James Wright
+ : @version 1.0
+ : @updated 5/20/2015
+ :)
 module namespace xqdoc-bootstrap = 'http://jw.xqdoc-bootstrap';
 import module namespace boot = 'http://jw.bootstrap' at 'https://raw.githubusercontent.com/james-jw/xquery-bootstrap/master/bootstrap.xqm';
 declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
