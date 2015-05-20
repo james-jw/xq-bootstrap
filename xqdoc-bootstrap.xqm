@@ -5,7 +5,7 @@
  : @updated 5/20/2015
  :)
 module namespace xqdoc-bootstrap = 'http://jw.xqdoc-bootstrap';
-import module namespace boot = 'http://jw.xq-bootstrap' at 'https://raw.githubusercontent.com/james-jw/xq-bootstrap/master/xq-bootstrap.xqm';
+import module namespace boot = 'http://jw.xq-bootstrap' at 'https://raw.githubusercontent.com/james-jw/xquery-bootstrap/master/xq-bootstrap.xqm';
 declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
 
 (:~
