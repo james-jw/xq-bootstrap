@@ -13,9 +13,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:attributes1">
     <h3>bootstrap:attributes</h3>
     <p>Generates a set of attribute elements</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:attributes($items as map(*)) as attribute()*</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -32,15 +32,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>attribute()</p>
   </div>
   <div class="section" id="bootstrap:badge1">
     <h3>bootstrap:badge</h3>
     <p>Creates a badge element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:badge($contents as item()*) as element(span)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -57,15 +57,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(span)</p>
   </div>
   <div class="section" id="bootstrap:breadcrumbs1">
     <h3>bootstrap:breadcrumbs</h3>
     <p>Generates a breadcrumb element from the provided elements</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -82,15 +82,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(ol)</p>
   </div>
   <div class="section" id="bootstrap:breadcrumbs2">
     <h3>bootstrap:breadcrumbs</h3>
     <p>Generates a breadcrumb element from the provided elements</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:breadcrumbs($array as array(*), $renderer as function(*)) as element(ol)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -113,15 +113,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(ol)</p>
   </div>
   <div class="section" id="bootstrap:collapse2">
     <h3>bootstrap:collapse</h3>
     <p>Adds collapsability to the provided contents</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:collapse($control as node(), $contents as node()*) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -144,28 +144,28 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:divider0">
     <h3>bootstrap:divider</h3>
     <p>Generates a dropdown divider element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:divider() as element(li)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead/>
       <tbody/>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(li)</p>
   </div>
   <div class="section" id="bootstrap:dropdown2">
     <h3>bootstrap:dropdown</h3>
     <p>Adds dropdown capabilities to a provided button or anchor</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:dropdown($button as element(*), $items as element()*) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -188,15 +188,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:dropdown3">
     <h3>bootstrap:dropdown</h3>
     <p>Adds dropdown capabilities to a provided button or anchor</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:dropdown($container as element(*), $button as element(), $items as element(li)*) as element(*)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -225,15 +225,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(*)</p>
   </div>
   <div class="section" id="bootstrap:grid2">
     <h3>bootstrap:grid</h3>
     <p>Generate a grid</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:grid($items as array(*), $columns as xs:integer) as element(div)*</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -256,28 +256,28 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:head0">
     <h3>bootstrap:head</h3>
     <p>Bootstrap a titleless basic head</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:head() as node()</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead/>
       <tbody/>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>node()</p>
   </div>
   <div class="section" id="bootstrap:head2">
     <h3>bootstrap:head</h3>
     <p>Creates a head object with standard meta tags</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:head($title as xs:string, $contents as node()*) as element(head)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -300,15 +300,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(head)</p>
   </div>
   <div class="section" id="bootstrap:html3">
     <h3>bootstrap:html</h3>
     <p>Creates the final html output node with the provided page contents, head and navbar.</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:html($contents as item()*, $head as node(), $nav as node()?) as element(html)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -337,15 +337,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(html)</p>
   </div>
   <div class="section" id="bootstrap:jumbotron3">
     <h3>bootstrap:jumbotron</h3>
     <p>Generates a jumbotron</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -374,15 +374,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:label1">
     <h3>bootstrap:label</h3>
     <p>Creates a 'default' label with the supplied contents.</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:label($contents as item()*) as element(span)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -399,15 +399,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(span)</p>
   </div>
   <div class="section" id="bootstrap:label2">
     <h3>bootstrap:label</h3>
     <p>Creates a label of the specified type.</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:label($type as xs:string, $contents as item()*) as element(span)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -430,15 +430,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(span)</p>
   </div>
   <div class="section" id="bootstrap:list-group-custom3">
     <h3>bootstrap:list-group-custom</h3>
     <p>Creates a composte list</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:list-group-custom($content as array(*), $title-key as xs:string, $content-key as xs:string) as element(ul)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -467,15 +467,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(ul)</p>
   </div>
   <div class="section" id="bootstrap:list-group1">
     <h3>bootstrap:list-group</h3>
     <p>Generates a list group</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:list-group($content as array(*)) as element(ul)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -492,15 +492,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(ul)</p>
   </div>
   <div class="section" id="bootstrap:list-group2">
     <h3>bootstrap:list-group</h3>
     <p>Generates a list group</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:list-group($content as array(*), $renderer as function(*)) as element(ul)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -523,15 +523,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(ul)</p>
   </div>
   <div class="section" id="bootstrap:modal5">
     <h3>bootstrap:modal</h3>
     <p>Generates a modal dialog from the provided toggle element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:modal($toggle as element(*), $title as xs:string, $body as node()*, $footer as node()*, $size as xs:string?) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -572,15 +572,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:nav3">
     <h3>bootstrap:nav</h3>
     <p>Generates a nav bar</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -609,15 +609,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:panel3">
     <h3>bootstrap:panel</h3>
     <p>Generates a default panel</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -646,15 +646,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:panel4">
     <h3>bootstrap:panel</h3>
     <p>Generates a panel</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*, $style as xs:string) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -689,15 +689,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:popover5">
     <h3>bootstrap:popover</h3>
     <p>Adds popover functionality to the provided element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:popover($element as element(*), $placement as xs:string, $title as xs:string?, $body as xs:string?, $style as xs:string?) as element(*)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -738,15 +738,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(*)</p>
   </div>
   <div class="section" id="bootstrap:progress-bar1">
     <h3>bootstrap:progress-bar</h3>
     <p>Generates a progress bar</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:progress-bar($percent as xs:integer) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -763,15 +763,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:progress-bar3">
     <h3>bootstrap:progress-bar</h3>
     <p>Generates a progress bar</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -794,15 +794,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:row3">
     <h3>bootstrap:row</h3>
     <p>Generates a grid row with the provided content, widths and offsets</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:row($items as item()*, $widths as xs:integer*, $offsets as xs:integer*) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -831,15 +831,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:scrollspy2">
     <h3>bootstrap:scrollspy</h3>
     <p>Adds scrollspy capabilities to the provided element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:scrollspy($element as element(*), $nav as element(div)) as item()*</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -862,15 +862,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>item()</p>
   </div>
   <div class="section" id="bootstrap:scrollspy3">
     <h3>bootstrap:scrollspy</h3>
     <p>Adds scrollspy capabilities to the provided element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) as item()*</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -899,15 +899,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>item()</p>
   </div>
   <div class="section" id="bootstrap:tab-panel2">
     <h3>bootstrap:tab-panel</h3>
     <p>Generates a tab panel</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:tab-panel($tabs as map(xs:string, item()), $style as xs:string?) as element(div)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -930,15 +930,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(div)</p>
   </div>
   <div class="section" id="bootstrap:table-body3">
     <h3>bootstrap:table-body</h3>
     <p>Generate a tbody element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:table-body($array as array(map(xs:string, item()*)), $keys as xs:string*, $numbered as xs:boolean) as element(tbody)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -967,15 +967,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(tbody)</p>
   </div>
   <div class="section" id="bootstrap:table-head2">
     <h3>bootstrap:table-head</h3>
     <p>Generates a thead node with the provied $headers</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as element(thead)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -998,15 +998,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(thead)</p>
   </div>
   <div class="section" id="bootstrap:table1">
     <h3>bootstrap:table</h3>
     <p>Create a table with rows for each map in the array and a column for the distinct key names</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:table($array as array(map(xs:string, item()*))) as element(table)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -1023,15 +1023,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(table)</p>
   </div>
   <div class="section" id="bootstrap:table3">
     <h3>bootstrap:table</h3>
     <p>Creates a table with rows for each map in the array and a column for the distinct key names</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:table($array as array(map(xs:string, item()*)), $class as xs:string*, $numbered as xs:boolean) as element(table)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -1060,15 +1060,15 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(table)</p>
   </div>
   <div class="section" id="bootstrap:tooltip3">
     <h3>bootstrap:tooltip</h3>
     <p>Adds popover functionality to the provided element</p>
-    <h4>Signature</h4>
+    <h5>Signature</h5>
     <p>declare function bootstrap:tooltip($element as element(*), $placement as xs:string, $title as xs:string) as element(*)</p>
-    <h4>Parameters</h4>
+    <h5>Parameters</h5>
     <table class="table">
       <thead>
         <th>Name</th>
@@ -1097,7 +1097,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
         </tr>
       </tbody>
     </table>
-    <h4>Returns</h4>
+    <h5>Returns</h5>
     <p>element(*)</p>
   </div>
 </div>
