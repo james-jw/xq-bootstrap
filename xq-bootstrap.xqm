@@ -4,7 +4,7 @@
  : @version 1.0
  : @updated 5/19/2015
  :)
-module namespace bootstrap = 'http://jw.bootstrap';
+module namespace bootstrap = 'http://jw.xq-bootstrap';
 
 (:~ 
  : Generates a jumbotron
