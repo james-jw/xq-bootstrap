@@ -19,7 +19,7 @@ declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:fu
     
     {if(count($function/xqdoc:signature) > 1) 
      then (<h4>Signatures</h4>, $function/xqdoc:signature ! 
-           <div>{replace(., '^declare', '')}</div>) 
+           <div>{replace(., '^declare ', '')}</div>) 
      else ()}
     {$function ! xqdoc-boot:function-to-html(.)}
   </div>
@@ -33,7 +33,7 @@ declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:fu
 declare function xqdoc-boot:function-to-html($function as element(xqdoc:function)) as element(div) {
   <div class="section" id="{$function/xqdoc:name || $function/@arity}">
     <h5>Signature</h5>
-    <p>{replace($function/xqdoc:signature,'^declare', '')}</p>
+    <p>{replace($function/xqdoc:signature,'^declare ', '')}</p>
     <p>{$function/xqdoc:comment/xqdoc:description/text()}</p>
     <h5>Parameters</h5>
     {boot:table(array {
