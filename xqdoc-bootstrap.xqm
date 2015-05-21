@@ -46,8 +46,8 @@ declare function xqdoc-boot:function-to-html($function as element(xqdoc:function
     })}
     <h5>Returns</h5>
     {boot:table(array { map {
-        'Type': $function/xqdoc:return/xqdoc:type,
-        'Description': $function/xqdoc:comment/xqdoc:return      
+        'Type': data($function/xqdoc:return/xqdoc:type),
+        'Description': data($function/xqdoc:comment/xqdoc:return)      
     }})}
   </div>
 };
