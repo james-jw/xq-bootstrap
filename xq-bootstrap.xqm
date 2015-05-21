@@ -401,9 +401,9 @@ declare function bootstrap:nav($id as xs:string, $links as element(a), $style as
 (:~  Generates a progress bar 
  : @param Value of the progress bar.
  : @param Style of the progress bar.
- : @param-example 89
- : @param-example 'striped'
- : @param-example true()
+ : @example-param 89
+ : @example-param 'striped'
+ : @example-param true()
  : @return Progress bar div.
  :)
 declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div) {
@@ -420,7 +420,7 @@ declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:str
  
 (:~  Generates a progress bar 
  : @param Value of the progress bar.
- : @param-example 56
+ : @example-param 56
  : @return Progress bar div.
  :)
 declare function bootstrap:progress-bar($percent as xs:integer) as element(div) {
