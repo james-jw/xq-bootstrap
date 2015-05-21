@@ -18,7 +18,7 @@ declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:fu
     <h3>{($function/xqdoc:name)[1]/text()}</h3>
     <h4>Signatures</h4>
     {if(count($function/xqdoc:signature) > 1) 
-     then $function/xqdoc:signature ! <div>{replace(., 'declare.*function\s\w*\:\w*\(', '')}</div> else ()}
+     then $function/xqdoc:signature ! <div>{replace(., 'declare.*function\s\w*:\w*\(', '')}</div> else ()}
     {$function ! xqdoc-boot:function-to-html(.)}
   </div>
 };
