@@ -327,7 +327,7 @@ declare function bootstrap:divider() as element(li) { <li class="divider" role="
  : @param Button or anchor to add the drop down too
  : @param Elements to place in the dropdown
  :)
-declare function bootstrap:dropdown($container as element(*), $button as element(), $items as element(li)*) as element(*) {
+declare function bootstrap:dropdown($container as element(*), $button as element(*), $items as element(li)*) as element(*) {
   let $id := replace($button/@id, '#', '') return
   copy $out := $container modify insert nodes (
     attribute class {'dropdown' },  
@@ -350,7 +350,7 @@ declare function bootstrap:dropdown($container as element(*), $button as element
  : @param Button or anchor to add the drop down too
  : @param Elements to place in the dropdown
  :)
-declare function bootstrap:dropdown($button as element(*), $items as element()*) as element(div) {
+declare function bootstrap:dropdown($button as element(*), $items as element(*)*) as element(div) {
   let $container := <div /> return
   bootstrap:dropdown(<div />, $button, $items)
 };
@@ -401,6 +401,10 @@ declare function bootstrap:nav($id as xs:string, $links as element(a), $style as
 (:~  Generates a progress bar 
  : @param Value of the progress bar.
  : @param Style of the progress bar.
+ : @param-example 89
+ : @param-example 'striped'
+ : @param-example true()
+ : @return Progress bar div.
  :)
 declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div) {
   <div class="progress">
@@ -416,6 +420,8 @@ declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:str
  
 (:~  Generates a progress bar 
  : @param Value of the progress bar.
+ : @param-example 56
+ : @return Progress bar div.
  :)
 declare function bootstrap:progress-bar($percent as xs:integer) as element(div) {
   bootstrap:progress-bar($percent, (), true())
@@ -425,7 +431,7 @@ declare function bootstrap:progress-bar($percent as xs:integer) as element(div) 
  : @param Button or anchor to toggle the contents collapsile. 
  : @param Content to place withing the collapsable div
  :)
-declare function bootstrap:collapse($control as node(), $contents as node()*) as element(div) {
+declare function bootstrap:collapse($control as node(), $container as element(div), $contents as node()*) as element(div) {
   let $id := replace($control/(@href|@data-target), '#', '') return
   <div class="collapse" id="{$id}">
     {$contents}
