@@ -12,11 +12,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <h2>Functions</h2>
   <div class="section" id="bootstrap:attributes">
     <h3>bootstrap:attributes</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:attributes($items as map(*)) as attribute()*</div>
     <div class="section" id="bootstrap:attributes1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:attributes($items as map(*)) as attribute()*</p>
+      <p>function bootstrap:attributes($items as map(*)) as attribute()*</p>
       <p>Generates a set of attribute elements</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -52,11 +50,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:badge">
     <h3>bootstrap:badge</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:badge($contents as item()*) as element(span)</div>
     <div class="section" id="bootstrap:badge1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:badge($contents as item()*) as element(span)</p>
+      <p>function bootstrap:badge($contents as item()*) as element(span)</p>
       <p>Creates a badge element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -93,11 +89,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:breadcrumbs bootstrap:breadcrumbs">
     <h3>bootstrap:breadcrumbs</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol)</div>
-    <div>declare function bootstrap:breadcrumbs($array as array(*), $renderer as function(*)) as element(ol)</div>
+    <div>function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol)</div>
+    <div>function bootstrap:breadcrumbs($array as array(*), $renderer as function(*)) as element(ol)</div>
     <div class="section" id="bootstrap:breadcrumbs1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol)</p>
+      <p>function bootstrap:breadcrumbs($array as array(map(xs:string, item()*))) as element(ol)</p>
       <p>Generates a breadcrumb element from the provided elements</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -132,7 +128,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:breadcrumbs2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:breadcrumbs($array as array(*), $renderer as function(*)) as element(ol)</p>
+      <p>function bootstrap:breadcrumbs($array as array(*), $renderer as function(*)) as element(ol)</p>
       <p>Generates a breadcrumb element from the provided elements</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -174,11 +170,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:collapse">
     <h3>bootstrap:collapse</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:collapse($control as node(), $container as element(div), $contents as node()*) as element(div)</div>
     <div class="section" id="bootstrap:collapse3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:collapse($control as node(), $container as element(div), $contents as node()*) as element(div)</p>
+      <p>function bootstrap:collapse($control as node(), $container as element(div), $contents as node()*) as element(div)</p>
       <p>Adds collapsability to the provided contents</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -220,11 +214,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:divider">
     <h3>bootstrap:divider</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:divider() as element(li)</div>
     <div class="section" id="bootstrap:divider0">
       <h5>Signature</h5>
-      <p>declare function bootstrap:divider() as element(li)</p>
+      <p>function bootstrap:divider() as element(li)</p>
       <p>Generates a dropdown divider element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -249,11 +241,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:dropdown bootstrap:dropdown">
     <h3>bootstrap:dropdown</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:dropdown($container as element(*), $button as element(*), $items as element(li)*) as element(*)</div>
-    <div>declare function bootstrap:dropdown($button as element(*), $items as element(*)*) as element(div)</div>
+    <div>function bootstrap:dropdown($container as element(*), $button as element(*), $items as element(li)*) as element(*)</div>
+    <div>function bootstrap:dropdown($button as element(*), $items as element(*)*) as element(div)</div>
     <div class="section" id="bootstrap:dropdown2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:dropdown($button as element(*), $items as element(*)*) as element(div)</p>
+      <p>function bootstrap:dropdown($button as element(*), $items as element(*)*) as element(div)</p>
       <p>Adds dropdown capabilities to a provided button or anchor</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -294,7 +286,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:dropdown3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:dropdown($container as element(*), $button as element(*), $items as element(li)*) as element(*)</p>
+      <p>function bootstrap:dropdown($container as element(*), $button as element(*), $items as element(li)*) as element(*)</p>
       <p>Adds dropdown capabilities to a provided button or anchor</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -342,11 +334,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:grid">
     <h3>bootstrap:grid</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:grid($items as array(*), $columns as xs:integer) as element(div)*</div>
     <div class="section" id="bootstrap:grid2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:grid($items as array(*), $columns as xs:integer) as element(div)*</p>
+      <p>function bootstrap:grid($items as array(*), $columns as xs:integer) as element(div)*</p>
       <p>Generate a grid</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -389,11 +379,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:head bootstrap:head">
     <h3>bootstrap:head</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:head($title as xs:string, $contents as node()*) as element(head)</div>
-    <div>declare function bootstrap:head() as node()</div>
+    <div>function bootstrap:head($title as xs:string, $contents as node()*) as element(head)</div>
+    <div>function bootstrap:head() as node()</div>
     <div class="section" id="bootstrap:head0">
       <h5>Signature</h5>
-      <p>declare function bootstrap:head() as node()</p>
+      <p>function bootstrap:head() as node()</p>
       <p>Bootstrap a titleless basic head</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -416,7 +406,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:head2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:head($title as xs:string, $contents as node()*) as element(head)</p>
+      <p>function bootstrap:head($title as xs:string, $contents as node()*) as element(head)</p>
       <p>Creates a head object with standard meta tags</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -458,11 +448,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:html">
     <h3>bootstrap:html</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:html($contents as item()*, $head as node(), $nav as node()?) as element(html)</div>
     <div class="section" id="bootstrap:html3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:html($contents as item()*, $head as node(), $nav as node()?) as element(html)</p>
+      <p>function bootstrap:html($contents as item()*, $head as node(), $nav as node()?) as element(html)</p>
       <p>Creates the final html output node with the provided page contents, head and navbar.</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -510,11 +498,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:jumbotron">
     <h3>bootstrap:jumbotron</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div)</div>
     <div class="section" id="bootstrap:jumbotron3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div)</p>
+      <p>function bootstrap:jumbotron($title as xs:string, $content as xs:string?, $style as xs:string?) as element(div)</p>
       <p>Generates a jumbotron</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -563,11 +549,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:label bootstrap:label">
     <h3>bootstrap:label</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:label($type as xs:string, $contents as item()*) as element(span)</div>
-    <div>declare function bootstrap:label($contents as item()*) as element(span)</div>
+    <div>function bootstrap:label($type as xs:string, $contents as item()*) as element(span)</div>
+    <div>function bootstrap:label($contents as item()*) as element(span)</div>
     <div class="section" id="bootstrap:label1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:label($contents as item()*) as element(span)</p>
+      <p>function bootstrap:label($contents as item()*) as element(span)</p>
       <p>Creates a 'default' label with the supplied contents.</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -602,7 +588,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:label2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:label($type as xs:string, $contents as item()*) as element(span)</p>
+      <p>function bootstrap:label($type as xs:string, $contents as item()*) as element(span)</p>
       <p>Creates a label of the specified type.</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -644,11 +630,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:list-group-custom">
     <h3>bootstrap:list-group-custom</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:list-group-custom($content as array(*), $title-key as xs:string, $content-key as xs:string) as element(ul)</div>
     <div class="section" id="bootstrap:list-group-custom3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:list-group-custom($content as array(*), $title-key as xs:string, $content-key as xs:string) as element(ul)</p>
+      <p>function bootstrap:list-group-custom($content as array(*), $title-key as xs:string, $content-key as xs:string) as element(ul)</p>
       <p>Creates a composte list</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -697,11 +681,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:list-group bootstrap:list-group">
     <h3>bootstrap:list-group</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:list-group($content as array(*), $renderer as function(*)) as element(ul)</div>
-    <div>declare function bootstrap:list-group($content as array(*)) as element(ul)</div>
+    <div>function bootstrap:list-group($content as array(*), $renderer as function(*)) as element(ul)</div>
+    <div>function bootstrap:list-group($content as array(*)) as element(ul)</div>
     <div class="section" id="bootstrap:list-group1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:list-group($content as array(*)) as element(ul)</p>
+      <p>function bootstrap:list-group($content as array(*)) as element(ul)</p>
       <p>Generates a list group</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -736,7 +720,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:list-group2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:list-group($content as array(*), $renderer as function(*)) as element(ul)</p>
+      <p>function bootstrap:list-group($content as array(*), $renderer as function(*)) as element(ul)</p>
       <p>Generates a list group</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -778,11 +762,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:modal">
     <h3>bootstrap:modal</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:modal($toggle as element(*), $title as xs:string, $body as node()*, $footer as node()*, $size as xs:string?) as element(div)</div>
     <div class="section" id="bootstrap:modal5">
       <h5>Signature</h5>
-      <p>declare function bootstrap:modal($toggle as element(*), $title as xs:string, $body as node()*, $footer as node()*, $size as xs:string?) as element(div)</p>
+      <p>function bootstrap:modal($toggle as element(*), $title as xs:string, $body as node()*, $footer as node()*, $size as xs:string?) as element(div)</p>
       <p>Generates a modal dialog from the provided toggle element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -842,11 +824,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:nav">
     <h3>bootstrap:nav</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div)</div>
     <div class="section" id="bootstrap:nav3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div)</p>
+      <p>function bootstrap:nav($id as xs:string, $links as element(a), $style as xs:string?) as element(div)</p>
       <p>Generates a nav bar</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -895,11 +875,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:panel bootstrap:panel">
     <h3>bootstrap:panel</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*, $style as xs:string) as element(div)</div>
-    <div>declare function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*) as element(div)</div>
+    <div>function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*, $style as xs:string) as element(div)</div>
+    <div>function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*) as element(div)</div>
     <div class="section" id="bootstrap:panel3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*) as element(div)</p>
+      <p>function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*) as element(div)</p>
       <p>Generates a default panel</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -946,7 +926,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:panel4">
       <h5>Signature</h5>
-      <p>declare function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*, $style as xs:string) as element(div)</p>
+      <p>function bootstrap:panel($head as node()*, $body as node()*, $footer as node()*, $style as xs:string) as element(div)</p>
       <p>Generates a panel</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1000,11 +980,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:popover">
     <h3>bootstrap:popover</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:popover($element as element(*), $placement as xs:string, $title as xs:string?, $body as xs:string?, $style as xs:string?) as element(*)</div>
     <div class="section" id="bootstrap:popover5">
       <h5>Signature</h5>
-      <p>declare function bootstrap:popover($element as element(*), $placement as xs:string, $title as xs:string?, $body as xs:string?, $style as xs:string?) as element(*)</p>
+      <p>function bootstrap:popover($element as element(*), $placement as xs:string, $title as xs:string?, $body as xs:string?, $style as xs:string?) as element(*)</p>
       <p>Adds popover functionality to the provided element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1065,11 +1043,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:progress-bar bootstrap:progress-bar">
     <h3>bootstrap:progress-bar</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div)</div>
-    <div>declare function bootstrap:progress-bar($percent as xs:integer) as element(div)</div>
+    <div>function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div)</div>
+    <div>function bootstrap:progress-bar($percent as xs:integer) as element(div)</div>
     <div class="section" id="bootstrap:progress-bar1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:progress-bar($percent as xs:integer) as element(div)</p>
+      <p>function bootstrap:progress-bar($percent as xs:integer) as element(div)</p>
       <p>Generates a progress bar</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1104,7 +1082,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:progress-bar3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div)</p>
+      <p>function bootstrap:progress-bar($percent as xs:integer, $style as xs:string?, $showValue as xs:boolean) as element(div)</p>
       <p>Generates a progress bar</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1146,11 +1124,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:row">
     <h3>bootstrap:row</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:row($items as item()*, $widths as xs:integer*, $offsets as xs:integer*) as element(div)</div>
     <div class="section" id="bootstrap:row3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:row($items as item()*, $widths as xs:integer*, $offsets as xs:integer*) as element(div)</p>
+      <p>function bootstrap:row($items as item()*, $widths as xs:integer*, $offsets as xs:integer*) as element(div)</p>
       <p>Generates a grid row with the provided content, widths and offsets</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1199,11 +1175,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:scrollspy bootstrap:scrollspy">
     <h3>bootstrap:scrollspy</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:scrollspy($element as element(*), $nav as element(div)) as item()*</div>
-    <div>declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) as item()*</div>
+    <div>function bootstrap:scrollspy($element as element(*), $nav as element(div)) as item()*</div>
+    <div>function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) as item()*</div>
     <div class="section" id="bootstrap:scrollspy2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:scrollspy($element as element(*), $nav as element(div)) as item()*</p>
+      <p>function bootstrap:scrollspy($element as element(*), $nav as element(div)) as item()*</p>
       <p>Adds scrollspy capabilities to the provided element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1244,7 +1220,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:scrollspy3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) as item()*</p>
+      <p>function bootstrap:scrollspy($id as xs:string, $element as element(*), $style as xs:string?) as item()*</p>
       <p>Adds scrollspy capabilities to the provided element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1292,11 +1268,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:tab-panel">
     <h3>bootstrap:tab-panel</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:tab-panel($tabs as map(xs:string, item()), $style as xs:string?) as element(div)</div>
     <div class="section" id="bootstrap:tab-panel2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:tab-panel($tabs as map(xs:string, item()), $style as xs:string?) as element(div)</p>
+      <p>function bootstrap:tab-panel($tabs as map(xs:string, item()), $style as xs:string?) as element(div)</p>
       <p>Generates a tab panel</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1338,11 +1312,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:table-body">
     <h3>bootstrap:table-body</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:table-body($array as array(map(xs:string, item()*)), $keys as xs:string*, $numbered as xs:boolean) as element(tbody)</div>
     <div class="section" id="bootstrap:table-body3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:table-body($array as array(map(xs:string, item()*)), $keys as xs:string*, $numbered as xs:boolean) as element(tbody)</p>
+      <p>function bootstrap:table-body($array as array(map(xs:string, item()*)), $keys as xs:string*, $numbered as xs:boolean) as element(tbody)</p>
       <p>Generate a tbody element</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1390,11 +1362,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:table-head">
     <h3>bootstrap:table-head</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as element(thead)</div>
     <div class="section" id="bootstrap:table-head2">
       <h5>Signature</h5>
-      <p>declare function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as element(thead)</p>
+      <p>function bootstrap:table-head($headers as xs:string*, $numbered as xs:boolean) as element(thead)</p>
       <p>Generates a thead node with the provied $headers</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1437,11 +1407,11 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   <div class="section" id="bootstrap:table bootstrap:table">
     <h3>bootstrap:table</h3>
     <h4>Signatures</h4>
-    <div>declare function bootstrap:table($array as array(map(xs:string, item()*)), $class as xs:string*, $numbered as xs:boolean) as element(table)</div>
-    <div>declare function bootstrap:table($array as array(map(xs:string, item()*))) as element(table)</div>
+    <div>function bootstrap:table($array as array(map(xs:string, item()*)), $class as xs:string*, $numbered as xs:boolean) as element(table)</div>
+    <div>function bootstrap:table($array as array(map(xs:string, item()*))) as element(table)</div>
     <div class="section" id="bootstrap:table1">
       <h5>Signature</h5>
-      <p>declare function bootstrap:table($array as array(map(xs:string, item()*))) as element(table)</p>
+      <p>function bootstrap:table($array as array(map(xs:string, item()*))) as element(table)</p>
       <p>Create a table with rows for each map in the array and a column for the distinct key names</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1476,7 +1446,7 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
     </div>
     <div class="section" id="bootstrap:table3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:table($array as array(map(xs:string, item()*)), $class as xs:string*, $numbered as xs:boolean) as element(table)</p>
+      <p>function bootstrap:table($array as array(map(xs:string, item()*)), $class as xs:string*, $numbered as xs:boolean) as element(table)</p>
       <p>Creates a table with rows for each map in the array and a column for the distinct key names</p>
       <h5>Parameters</h5>
       <table class="table">
@@ -1524,11 +1494,9 @@ A set of utility functions for generating Bootstrap 3.1 markup in XQuery for ser
   </div>
   <div class="section" id="bootstrap:tooltip">
     <h3>bootstrap:tooltip</h3>
-    <h4>Signatures</h4>
-    <div>declare function bootstrap:tooltip($element as element(*), $placement as xs:string, $title as xs:string) as element(*)</div>
     <div class="section" id="bootstrap:tooltip3">
       <h5>Signature</h5>
-      <p>declare function bootstrap:tooltip($element as element(*), $placement as xs:string, $title as xs:string) as element(*)</p>
+      <p>function bootstrap:tooltip($element as element(*), $placement as xs:string, $title as xs:string) as element(*)</p>
       <p>Adds popover functionality to the provided element</p>
       <h5>Parameters</h5>
       <table class="table">
