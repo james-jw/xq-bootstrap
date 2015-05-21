@@ -8,6 +8,11 @@ module namespace xqdoc-boot = 'http://jw.xqdoc-bootstrap';
 import module namespace boot = 'http://jw.xq-bootstrap' at 'https://raw.githubusercontent.com/james-jw/xquery-bootstrap/master/xq-bootstrap.xqm';
 declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
 
+(:~
+ : Provided a xqdoc:function element. Returns the functions signature
+ : @param Function to retrieve the signature for
+ : @return Function's signature
+ :)
 declare function xqdoc:function-signature($function as element(xqdoc:function)) as xs:string {
  let $name := $function/xqdoc:name/text()
  return 
