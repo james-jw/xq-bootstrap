@@ -32,7 +32,7 @@ declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:fu
  :)
 declare function xqdoc-boot:function-to-html($function as element(xqdoc:function)) as element(div) {
   <div class="section" id="{$function/xqdoc:name || $function/@arity}">
-    <h5>Signature</h5>
+    <h4>Signature</h4>
     <p>{replace($function/xqdoc:signature,'^declare ', '')}</p>
     <p>{$function/xqdoc:comment/xqdoc:description/text()}</p>
     <h5>Parameters</h5>
