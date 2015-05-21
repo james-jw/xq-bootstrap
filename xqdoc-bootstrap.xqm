@@ -8,6 +8,18 @@ module namespace xqdoc-boot = 'http://jw.xqdoc-bootstrap';
 import module namespace boot = 'http://jw.xq-bootstrap' at 'https://raw.githubusercontent.com/james-jw/xquery-bootstrap/master/xq-bootstrap.xqm';
 declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
 
+declare function xqdoc:function-signature($function as element(xqdoc:function)) as xs:string {
+ let $name := $function/xqdoc:name/text()
+ return 
+  <sig>{$name}({
+    string-join($function//xqdoc:parameter ! 
+      ('$' || ./xqdoc:name || (if(./xqdoc:type) then ' as ' || ./xqdoc:type || ./xqdoc:type/@occurrence else ())), ',')
+  }){
+    if($function//xqdoc:return) then ' as ' || $function//xqdoc:return/xqdoc:type else ()
+  }
+  </sig>/text()
+};
+
 (:~
  : Provided a function group generates html markup for the group
  : @param Group of xqdoc:function elements
@@ -18,8 +30,8 @@ declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:fu
     <h3>{($function/xqdoc:name)[1]/text()}</h3>
     
     {if(count($function/xqdoc:signature) > 1) 
-     then (<h4>Signatures</h4>, $function/xqdoc:signature ! 
-           <div>{replace(., '^declare ', '')}</div>) 
+     then (<h4>Signatures</h4>, 
+        $function/xqdoc:signature ! <div>{xqdoc-boot:function-signature(.)}</div>) 
      else ()}
     {$function ! xqdoc-boot:function-to-html(.)}
   </div>
@@ -33,7 +45,7 @@ declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:fu
 declare function xqdoc-boot:function-to-html($function as element(xqdoc:function)) as element(div) {
   <div class="section" id="{$function/xqdoc:name || $function/@arity}">
     <h4>Signature</h4>
-    <p>{replace($function/xqdoc:signature,'^declare ', '')}</p>
+    <p>{xqdoc-boot:function-signature($function/xqdoc:signature)}</p>
     <p>{$function/xqdoc:comment/xqdoc:description/text()}</p>
     <h5>Parameters</h5>
     {boot:table(array {
