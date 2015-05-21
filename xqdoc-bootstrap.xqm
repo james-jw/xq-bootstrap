@@ -15,8 +15,8 @@ declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
  :)
 declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:function)*) as element(div) {
   <div class="section" id="{$function/xqdoc:name[1]}">
-    <h3>{$function/xqdoc:name[1]/text()}</h4>
-    <h4>Signatures</h5>
+    <h3>{$function/xqdoc:name[1]/text()}</h3>
+    <h4>Signatures</h4>
     {$function/xqdoc:signature ! <div>{.}</div>}
     {$function ! xqdoc-boot:function-to-html(.)}
   </div>
