@@ -4,21 +4,34 @@
  : @version 1.0
  : @updated 5/20/2015
  :)
-module namespace xqdoc-bootstrap = 'http://jw.xqdoc-bootstrap';
+module namespace xqdoc-boot = 'http://jw.xqdoc-bootstrap';
 import module namespace boot = 'http://jw.xq-bootstrap' at 'https://raw.githubusercontent.com/james-jw/xquery-bootstrap/master/xq-bootstrap.xqm';
 declare namespace xqdoc = 'http://www.xqdoc.org/1.0';
+
+(:~
+ : Provided a function group generates html markup for the group
+ : @param Group of xqdoc:function elements
+ : @return A div containing the documentation for the function group
+ :)
+declare function xqdoc-boot:function-group-to-html($function as element(xqdoc:function)*) as element(div) {
+  <div class="section" id="{$function/xqdoc:name[1]}">
+    <h3>{$function/xqdoc:name[1]/text()}</h4>
+    <h4>Signatures</h5>
+    {$function/xqdoc:signature ! <div>{.}</div>}
+    {$function ! xqdoc-boot:function-to-html(.)}
+  </div>
+};
 
 (:~
  : Provided an xqdoc:function element. Creates html documentation
  : @param Xqdoc:function element containing function metadata
  : @return Html div element containing Bootstrap CSS3 markup
  :)
-declare function xqdoc-bootstrap:xqdoc-function-to-html($function as element(xqdoc:function)) as element(div) {
+declare function xqdoc-boot:function-to-html($function as element(xqdoc:function)) as element(div) {
   <div class="section" id="{$function/xqdoc:name || $function/@arity}">
-    <h4>{$function/xqdoc:name/text()}</h4>
-    {$function/xqdoc:comment/xqdoc:description/text()}
     <h5>Signature</h5>
     {replace($function/xqdoc:signature/text(), 'declare.*function\s', '')}
+    {$function/xqdoc:comment/xqdoc:description/text()}
     <h5>Parameters</h5>
     {boot:table(array {
       for $param at $i in $function/xqdoc:comment/xqdoc:param
@@ -44,7 +57,7 @@ declare function xqdoc-bootstrap:xqdoc-function-to-html($function as element(xqd
  : @param Document to convert
  : @return Html div element containing Bootstrap CSS 3 markup
  :)
-declare function xqdoc-bootstrap:xqdoc-to-html($doc as element(xqdoc:xqdoc)) as element(div) {
+declare function xqdoc-boot:xqdoc-to-html($doc as element(xqdoc:xqdoc)) as element(div) {
   let $module := $doc/xqdoc:module return
   <div class="section">
      <h1>{$module/xqdoc:name/text()}</h1>
@@ -58,7 +71,9 @@ declare function xqdoc-bootstrap:xqdoc-to-html($doc as element(xqdoc:xqdoc)) as 
      
      <h2>Functions</h2>
      {for $function in $doc/xqdoc:functions/xqdoc:function 
-      order by $function/xqdoc:name || $function/@arity 
-      return local:xqdoc-function-to-html($function)}
+      let $name := $function/xqdoc:name
+      order by $name || $function/@arity ascending
+      group by $name 
+      return xqdoc-boot:function-group-to-html($function)}
   </div>
 };
