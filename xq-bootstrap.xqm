@@ -1,10 +1,10 @@
 (:~ 
- : Provides helper functions for generating bootstrap component markup
+ : Provides helper functions for generating bootstrap 3.1 component markup
  : @author James Wright
  : @version 1.0
  : @updated 5/19/2015
  :)
-module namespace bootstrap = 'http://jw.xq-bootstrap';
+module namespace bootstrap = 'xq-bootstrap';
 
 (:~ 
  : Generates a jumbotron
