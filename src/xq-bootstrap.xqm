@@ -437,3 +437,134 @@ declare function bootstrap:collapse($control as node(), $container as element(di
     {$contents}
   </div>
 };
+
+(:~
+ : Creates a checkbox.
+ : @param  $name     name of checkbox
+ : @param  $value    value
+ : @param  $checked  checked state
+ : @param  $label    label
+ : @return checkbox
+ :)
+declare function bootstrap:checkbox(
+  $name     as xs:string,
+  $value    as xs:string,
+  $checked  as xs:boolean,
+  $label    as xs:string
+) as node()+ {
+  bootstrap:checkbox($label, map:merge((
+    map { 'name':  $name },
+    map { 'value': $value },
+    if($checked) then map { 'checked': $checked } else ()
+  )))
+};
+
+(:~
+ : Creates a checkbox.
+ : @param  $name  name of checkbox
+ : @param  $map   additional attributes
+ : @return checkbox
+ :)
+declare function bootstrap:checkbox(
+  $label   as xs:string,
+  $map     as map(*)
+) as node()+ {
+  element input {
+    attribute type { "checkbox" },
+    map:for-each($map, function($key, $value) { attribute { $key } { $value } })
+  },
+  text { $label }
+};
+
+(:~
+ : Creates a button.
+ : @param  $value  button value
+ : @param  $label  label
+ : @return button
+ :)
+declare function bootstrap:button(
+  $value  as xs:string,
+  $label  as xs:string
+) as element(button) {
+  bootstrap:button($value, $label, false())
+};
+
+(:~
+ : Creates a button.
+ : @param  $value    button value
+ : @param  $label    label
+ : @param  $confirm  confirm click
+ : @return button
+ :)
+declare function bootstrap:button(
+  $value    as xs:string,
+  $label    as xs:string,
+  $confirm  as xs:boolean
+) as element(button) {
+  bootstrap:button($value, $label, $confirm, ())
+};
+
+(:~
+ : Creates a button.
+ : @param  $value    button value
+ : @param  $label    label
+ : @param  $confirm  confirm click
+ : @param  $class    button class
+ : @return button
+ :)
+declare function bootstrap:button(
+  $value    as xs:string,
+  $label    as xs:string,
+  $confirm  as xs:boolean,
+  $class    as xs:string?
+) as element(button) {
+  element button {
+    attribute type { 'submit' },
+    attribute name { 'action' },
+    attribute value { $value },
+    $confirm[.] ! attribute onclick { "return confirm('Are you sure?');" },
+    $class ! attribute class { . },
+    $label
+  }
+};
+
+(:~
+ : Focuses the specified field via Javascript.
+ : @param  $element  element to be focused
+ : @return script element
+ :)
+declare function bootstrap:focus(
+  $element  as xs:string
+) as element(script) {
+  <script type="text/javascript">
+    (function(){{ var u = document.getElementById('{ $element }'); u.focus(); u.select(); }})();
+  </script>
+};
+
+(:~
+ : Creates a link to the specified target.
+ : @param  $text   link text
+ : @param  $target target
+ : @return link
+ :)
+declare function bootstrap:link(
+  $text   as xs:string,
+  $target as xs:string
+) as element(a) {
+  <a href="{ $target }">{ $text }</a>
+};
+
+(:~
+ : Creates a link to the specified target.
+ : @param  $text   link text
+ : @param  $target target
+ : @param  $params map with query parameters
+ : @return link
+ :)
+declare function bootstrap:link(
+  $text   as xs:string,
+  $target as xs:string,
+  $params as map(*)
+) as element(a) {
+  bootstrap:link($text, web:create-url($target, $params))
+};
