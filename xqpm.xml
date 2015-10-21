@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Represents an example xq-ant collect file -->
+<config name="http://xq-bootstrap" abbrev="xq-bootstrap" version="1.0">
+  <title>XQuery 3.1 functions for generating Bootstrap 3 markup</title>
+  <dependencies>
+    <directory path="{{js}}">
+      <dependency name="jquery.js" />
+      <dependency name="bootstrap.js" path="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" />
+    </directory>
+    <directory path="{{css}}">
+      <dependency name="cosmo-bootstrap.css" path="https://bootswatch.com/cosmo/bootstrap.css"/>
+      <dependency name="darkly-bootstrap.css" path="https://bootswatch.com/darkly/bootstrap.css"/>
+      <dependency name="flatly-bootstrap.css" path="https://bootswatch.com/flatly/bootstrap.css"/>
+      <dependency name="slate-bootstrap.css" path="https://bootswatch.com/slate/bootstrap.css"/>
+      <dependency name="superhero-bootstrap.css" path="https://bootswatch.com/superhero/bootstrap.css"/>
+    </directory>
+  </dependencies>
+</config>
